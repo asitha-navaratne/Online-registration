@@ -1,0 +1,85 @@
+
+/******************************* General *******************************/
+
+* {
+	font-family: "Montserrat", sans-serif;
+	text-rendering: optimizeLegibility;
+}
+
+a {
+	text-decoration: none;
+}
+
+body {
+	background-image: linear-gradient(rgba(255, 145, 0, 0.5),
+		rgba(255, 230, 0, 0.5));
+}
+
+.users-tab {
+  max-height: 50vh;
+}
+
+/************************** Images and icons **************************/
+
+.svg-image {
+	width: 120px;
+}
+
+.icon {
+	color: #333;
+	padding: 4px;
+	border: 2px solid #333;
+	border-radius: 10px;
+}
+
+.tile-image-login {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+		url(images/tile-login-min.jpg);
+	background-size: cover;
+	background-position: 30% 50%;
+}
+
+.tile-image-profile {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)),
+		url(images/tile-profile-min.jpg);
+	background-size: cover;
+	background-position: 20% 50%;
+}
+
+.tile-image-delete {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)),
+		url(images/tile-delete-min.jpg);
+	background-size: cover;
+}
+
+/************************ Logout and back button ************************/
+
+.logout-btn {
+	color: rgb(255, 40, 0);
+	padding: 5px;
+	border: 2px solid rgba(255, 80, 60, 0.8);
+	border-radius: 10px;
+}
+
+.logout-btn:hover {
+	color: rgb(255, 120, 80);
+}
+
+/****************************** Scroll bar ******************************/
+
+::-webkit-scrollbar {
+	height: 6px;
+	width: 6px;
+}
+
+::-webkit-scrollbar-track {
+	background: #ddd;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}

@@ -20,26 +20,26 @@ public class DeleteController extends HttpServlet {
 		String pass = request.getParameter("pass");
 		
 		HttpSession session = request.getSession();
-		User u = (User)session.getAttribute("user");																	/// Gets User object that was set as session attribute during login
+		User u = (User)session.getAttribute("user");									/// Gets User object that was set as session attribute during login
 		
 		if(u.getPass().equals(pass)) {
 			
 			int result = UserDao.deleteUser(u);
 			
 			if(result == 0) {
-				session.removeAttribute("user");																		/// Remove User object set as session attribute
-				session.invalidate();																					/// Invalidates current session and removes any objects that were bound to the session
+				session.removeAttribute("user");								/// Remove User object set as session attribute
+				session.invalidate();										/// Invalidates current session and removes any objects that were bound to the session
 				
-				response.sendRedirect("login.jsp");																		/// Successfully deleted user from database
+				response.sendRedirect("login.jsp");								/// Successfully deleted user from database
 			}
 			else {
 				request.setAttribute("errorMessage","An error occurred! Please try again.");
-				request.getRequestDispatcher("delete.jsp").forward(request,response);									/// User was not deleted from the database
+				request.getRequestDispatcher("delete.jsp").forward(request,response);				/// User was not deleted from the database
 			}
 		}
 		else {
 			request.setAttribute("errorMessage","Password is incorrect!");
-			request.getRequestDispatcher("delete.jsp").forward(request,response);										/// Incorrect password entered
+			request.getRequestDispatcher("delete.jsp").forward(request,response);					/// Incorrect password entered
 		}
 	}
 

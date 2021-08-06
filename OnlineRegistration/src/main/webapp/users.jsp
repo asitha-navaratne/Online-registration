@@ -46,24 +46,23 @@
 	if (user == null) {
 		response.sendRedirect("login.jsp");
 	}
-
-	@SuppressWarnings("unchecked")
-	List<User> userList = (List<User>) request.getAttribute("userList");
+	else {
+		@SuppressWarnings("unchecked")
+		List<User> userList = (List<User>) request.getAttribute("userList");
 	%>
 	<div class="container-fluid vh-100">
 		<div class="row h-100">
 			<div class="col-10 col-xl-8 m-auto">
 				<div class="card overflow-auto">
 					<div class="ps-3 pt-3">
-						<a href="profile.jsp" class="logout-btn">Back</a>
+						<a href="search.jsp" class="logout-btn">Back</a>
+						<a href="profile.jsp" class="logout-btn ms-2">Profile</a>
 					</div>
-					<img src="resources/images/icon-search.svg"
-						alt="Searching for Users"
+					<img src="resources/images/icon-users.svg"
+						alt="Users Found"
 						class="img-fluid d-block mx-auto svg-image" />
 					<div class="text-center">
 						<h2 class="text-capitalize mt-2">find users</h2>
-						<p class="text-capitalize mt-3 mb-1 px-1">discover users with
-							similar interests to yours</p>
 					</div>
 					<p class="text-center text-danger my-2">&#8203;${errorMessage}</p>
 					<div class="py-2 users-tab">
@@ -84,9 +83,10 @@
 									<td><%=u.getField()%></td>
 									<td><%=u.getEmail()%></td>
 								</tr>
-								<%
+							<%
 								}
-								%>
+							}
+							%>
 							</tbody>
 						</table>
 						<div class="my-5">&#8203;</div>

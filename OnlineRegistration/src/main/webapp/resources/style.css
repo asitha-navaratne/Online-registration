@@ -1,4 +1,3 @@
-
 /******************************* General *******************************/
 
 * {
@@ -16,7 +15,7 @@ body {
 }
 
 .users-tab {
-  max-height: 50vh;
+	max-height: 50vh;
 }
 
 /************************** Images and icons **************************/
@@ -50,6 +49,13 @@ body {
 	background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)),
 		url(images/tile-delete-min.jpg);
 	background-size: cover;
+}
+
+.tile-image-search {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)),
+		url(images/tile-search-min.jpg);
+	background-size: cover;
+	background-position: 50% 80%;
 }
 
 /************************ Logout and back button ************************/

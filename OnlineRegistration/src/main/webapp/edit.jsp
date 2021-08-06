@@ -44,6 +44,7 @@
 	if (user == null) {
 		response.sendRedirect("login.jsp");
 	}
+	else {
 	%>
 	<div class="container-fluid min-vh-100">
 		<div class="row min-vh-100">
@@ -117,6 +118,9 @@
 			</div>
 		</div>
 	</div>
+	<%
+	}
+	%>
 	<script src="resources/script.js"></script>
 </body>
 </html>

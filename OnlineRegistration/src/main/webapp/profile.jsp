@@ -46,6 +46,7 @@
 	if (user == null) {
 		response.sendRedirect("login.jsp");
 	}
+	else {
 	%>
 	<div class="container-fluid">
 		<div class="row min-vh-100 m-1">
@@ -83,8 +84,8 @@
 								</table>
 							</div>
 							<div class="ms-5 mb-3">
-								<a href="retrieve" class="d-block p-2"><i
-									class="bi bi-people-fill icon"></i><span class="p-2">Find
+								<a href="search.jsp" class="d-block p-2"><i
+									class="bi bi-people-fill icon"></i><span class="p-2">Search
 										Users</span></a> <a href="edit.jsp" class="d-block p-2"><i
 									class="bi bi-pencil-fill icon"></i><span class="p-2">Edit
 										Details</span></a> <a href="delete.jsp" class="d-block p-2"><i
@@ -98,5 +99,8 @@
 			</div>
 		</div>
 	</div>
+	<%
+	}
+	%>
 </body>
 </html>

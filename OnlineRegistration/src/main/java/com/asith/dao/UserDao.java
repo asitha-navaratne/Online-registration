@@ -221,14 +221,13 @@ public interface UserDao {
 	
 	
 	/**
-	 * Retrieve all users from the database with similar field of interest as user
+	 * Retrieve all users from the database whose User Name matches the search string
 	 * 
-	 * @param uname User name of user requesting information
-	 * @param field Field of interest of user
-	 * @return		List of User objects with user name, email and field of interest
+	 * @param search Search string provided
+	 * @return		 List of User objects with user name, email and field of interest
 	 * 
 	 * */
-	public static List<User> retrieveUsers(String uname, String field) {
+	public static List<User> retrieveUsers(String search) {
 		
 		List<User> userList = new ArrayList<>();
 		
@@ -236,9 +235,48 @@ public interface UserDao {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/user_db","root","Jotunheim1933");
 			
-			PreparedStatement ps = con.prepareStatement("SELECT user_name, field, email FROM users WHERE field LIKE UPPER(?) AND user_name NOT LIKE UPPER(?)");
-			ps.setString(1, "%" + field + "%");
-			ps.setString(2, uname);
+			PreparedStatement ps = con.prepareStatement("SELECT user_name, field, email FROM users WHERE user_name LIKE UPPER(?)");
+			ps.setString(1, "%" + search + "%");
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				User u = new User();
+				u.setUname(rs.getString("user_name"));
+				u.setField(rs.getString("field"));
+				u.setEmail(rs.getString("email"));
+				
+				userList.add(u);											/// Iterate over retrieved users and add them to userList
+			}
+			
+			ps.close();
+			con.close();
+		}
+		catch(SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return userList;
+	}
+	
+	
+	/**
+	 * Retrieve all users from the database whose Field of Interest matches the search string
+	 * 
+	 * @param search Search string provided
+	 * @return		 List of User objects with user name, email and field of interest
+	 * 
+	 * */
+	public static List<User> retrieveFields(String search) {
+		
+		List<User> userList = new ArrayList<>();
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/user_db","root","Jotunheim1933");
+			
+			PreparedStatement ps = con.prepareStatement("SELECT user_name, field, email FROM users WHERE field LIKE UPPER(?)");
+			ps.setString(1, "%" + search + "%");
 			
 			ResultSet rs = ps.executeQuery();
 			

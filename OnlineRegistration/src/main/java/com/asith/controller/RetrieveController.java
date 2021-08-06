@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.asith.dao.UserDao;
 import com.asith.model.User;
@@ -20,23 +19,31 @@ public class RetrieveController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		HttpSession session = request.getSession();
-		User u = (User) session.getAttribute("user");
+		String search = request.getParameter("search");
+		String option = request.getParameter("option");
 
-		if (u == null) {
-			response.sendRedirect("login.jsp");
+		List<User> userList = null;
+
+		if (option.equals("uname")) {
+			userList = UserDao.retrieveUsers(search);
+		} 
+		else if (option.equals("field")) {
+			userList = UserDao.retrieveFields(search);
 		}
-		else {
-			
-			List<User> userList = UserDao.retrieveUsers(u.getUname(), u.getField());
-
-			if (userList != null) {
+		
+		if (userList != null) {
+			if(userList.isEmpty()) {
 				request.setAttribute("userList", userList);
-			} else {
-				request.setAttribute("errorMessage", "An error occurred! Please try again.");
+				request.setAttribute("errorMessage", "No users found!");
 			}
-			request.getRequestDispatcher("users.jsp").forward(request, response);
+			else {
+				request.setAttribute("userList", userList);
+			}
+		} 
+		else {
+			request.setAttribute("userList", userList);
+			request.setAttribute("errorMessage", "An error occurred! Please try again.");
 		}
+		request.getRequestDispatcher("users.jsp").forward(request, response);
 	}
-
 }

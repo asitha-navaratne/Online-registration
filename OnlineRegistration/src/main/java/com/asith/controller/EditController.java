@@ -22,7 +22,7 @@ public class EditController extends HttpServlet {
 		String lname = request.getParameter("lname");				/// Last name
 		String email = request.getParameter("email");				/// Email
 		String field = request.getParameter("field");				/// Field of interest
-		String pass = request.getParameter("pass");					/// Password
+		String pass = request.getParameter("pass");				/// Password
 		String cpass = request.getParameter("cpass");				/// Confirm password
 		
 		if(pass.equals(cpass)) {
@@ -39,16 +39,16 @@ public class EditController extends HttpServlet {
 			
 			if(result == 0) {
 				HttpSession session = request.getSession();
-				session.setAttribute("user",u);																				/// Update User object that was set as session attribute
+				session.setAttribute("user",u);												/// Update User object that was set as session attribute
 				
-				response.sendRedirect("profile.jsp");																		/// Database was updated successfully
+				response.sendRedirect("profile.jsp");											/// Database was updated successfully
 			}
 			else {
 				if(result == 1) {
 					request.setAttribute("errorMessage","Data was not entered into database! Please try again.");			/// Database was not updated properly
 				}
 				if(result == 2) {
-					request.setAttribute("errorMessage","An error occurred! Please try again.");							/// The editUser() method terminated prematurely
+					request.setAttribute("errorMessage","An error occurred! Please try again.");					/// The editUser() method terminated prematurely
 				}
 				request.getRequestDispatcher("edit.jsp").forward(request,response);
 			}
@@ -56,7 +56,7 @@ public class EditController extends HttpServlet {
 		}
 		else {
 			request.setAttribute("errorMessage","Passwords do not match!");
-			request.getRequestDispatcher("edit.jsp").forward(request,response);												/// Password and Confirm Password did not match
+			request.getRequestDispatcher("edit.jsp").forward(request,response);								/// Password and Confirm Password did not match
 		}
 	}
 

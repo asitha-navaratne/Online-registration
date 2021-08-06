@@ -18,4 +18,4 @@ Even so, there are some pages which still need a little work in terms of respons
 there seems to be a little issue on my IDE when using Maven which I'm trying to figure out at the moment. Until then, I'd advise anyone trying to run this project to add the JDBC 
 driver for MySQL (ideally version 8.0.25) to the project's library.</p>
 
-<p align="justify">I added a Search users functionality where a user can search for other users by User name or Field of interest as well.</p>
+<p align="justify">I added a Search users functionality where a user can search for other users by User name or Field of interest as well. There seems to be an issue with the gitignore file in Eclipse so I had to manually delete some files and directories which were unnecessary to the repo.</p>

@@ -27,11 +27,11 @@ public class LoginController extends HttpServlet {
 		int result = UserDao.verifyUser(u);
 		
 		if(result == 0) {
-			u = UserDao.getUser(uname);																/// User verified successfully
+			u = UserDao.getUser(uname);									/// User verified successfully
 			
 			if(u != null) {
 				HttpSession session = request.getSession();
-				session.setAttribute("user",u);														/// Set retrieved user model as session attribute for login validation
+				session.setAttribute("user",u);								/// Set retrieved user model as session attribute for login validation
 				
 				response.sendRedirect("profile.jsp");
 			}
@@ -43,7 +43,7 @@ public class LoginController extends HttpServlet {
 		}
 		else {
 			if (result == 1) {
-				request.setAttribute("errorMessage","Incorrect user name or password!");			/// User not verified
+				request.setAttribute("errorMessage","Incorrect user name or password!");		/// User not verified
 			}
 			else {
 				request.setAttribute("errorMessage","An error occurred! Please try again.");		/// The getUser() method terminated prematurely

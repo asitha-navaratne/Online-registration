@@ -16,7 +16,7 @@ public interface UserDao {
 	 * Get user information from database 
 	 * 
 	 * @param uname	User "root" of user to retrieve data
-	 * @return		User object containing retrieved data
+	 * @return	User object containing retrieved data
 	 * 
 	 * */
 	public static User getUser(String uname) {
@@ -55,7 +55,7 @@ public interface UserDao {
 	/**
 	 * Register user in the database 
 	 * 
-	 * @param u Object of User with the data to be entered
+	 * @param u 	Object of User with the data to be entered
 	 * @return	Number representing the condition of execution
 	 * 
 	 * */
@@ -73,7 +73,7 @@ public interface UserDao {
 			if(rs.next()) {
 				ps.close();
 				con.close();
-				return 1;												/// If user "root" already exists in database, return 1
+				return 1;											/// If user "root" already exists in database, return 1
 			}
 			else {
 				ps = con.prepareStatement("INSERT INTO users(user_name,first_name,last_name,email,field,password) VALUES(?,?,?,?,?,?)");
@@ -90,10 +90,10 @@ public interface UserDao {
 				con.close();
 				
 				if (result > 0) {
-					return 0;											/// If database rows updated, return 0
+					return 0;										/// If database rows updated, return 0
 				}
 				else {
-					return 2;											/// If no rows were updated, return 2
+					return 2;										/// If no rows were updated, return 2
 				}
 			}
 		}
@@ -101,7 +101,7 @@ public interface UserDao {
 			e.printStackTrace();
 		}
 		
-		return 3;														/// If try block is not executed for some reason, return 3
+		return 3;													/// If try block is not executed for some reason, return 3
 	}
 	
 	
@@ -132,17 +132,17 @@ public interface UserDao {
 			con.close();
 			
 			if(result > 0) {
-				return 0;												/// If database is updated successfully, return 0
+				return 0;											/// If database is updated successfully, return 0
 			}
 			else {
-				return 1;												/// If database is not updated, return 1
+				return 1;											/// If database is not updated, return 1
 			}
 		}
 		catch(SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		
-		return 2;														/// If try block is not executed for some reason, return 2
+		return 2;													/// If try block is not executed for some reason, return 2
 	}
 	
 	
@@ -168,19 +168,19 @@ public interface UserDao {
 			if(rs.next()) {
 				ps.close();
 				con.close();
-				return 0;													/// If user is verified successfully, return 0
+				return 0;											/// If user is verified successfully, return 0
 			}
 			else {
 				ps.close();
 				con.close();
-				return 1;													/// If verification fails, return 1
+				return 1;											/// If verification fails, return 1
 			}
 		}
 		catch(SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		
-		return 2;															/// If try block is not executed for some reason, return 2
+		return 2;													/// If try block is not executed for some reason, return 2
 	}
 	
 	
@@ -206,17 +206,17 @@ public interface UserDao {
 			con.close();
 			
 			if(result > 0) {
-				return 0;													/// If user is deleted successfully, return 0
+				return 0;											/// If user is deleted successfully, return 0
 			}
 			else {
-				return 1;													/// If deletion is not successful, return 1
+				return 1;											/// If deletion is not successful, return 1
 			}
 		}
 		catch(SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		
-		return 2;															/// If try block is not executed for some reason, return 2
+		return 2;													/// If try block is not executed for some reason, return 2
 	}
 	
 	
@@ -224,7 +224,7 @@ public interface UserDao {
 	 * Retrieve all users from the database whose User Name matches the search string
 	 * 
 	 * @param search Search string provided
-	 * @return		 List of User objects with user name, email and field of interest
+	 * @return	 List of User objects with user name, email and field of interest
 	 * 
 	 * */
 	public static List<User> retrieveUsers(String search) {
@@ -246,7 +246,7 @@ public interface UserDao {
 				u.setField(rs.getString("field"));
 				u.setEmail(rs.getString("email"));
 				
-				userList.add(u);											/// Iterate over retrieved users and add them to userList
+				userList.add(u);										/// Iterate over retrieved users and add them to userList
 			}
 			
 			ps.close();
@@ -264,7 +264,7 @@ public interface UserDao {
 	 * Retrieve all users from the database whose Field of Interest matches the search string
 	 * 
 	 * @param search Search string provided
-	 * @return		 List of User objects with user name, email and field of interest
+	 * @return	 List of User objects with user name, email and field of interest
 	 * 
 	 * */
 	public static List<User> retrieveFields(String search) {
@@ -286,7 +286,7 @@ public interface UserDao {
 				u.setField(rs.getString("field"));
 				u.setEmail(rs.getString("email"));
 				
-				userList.add(u);											/// Iterate over retrieved users and add them to userList
+				userList.add(u);										/// Iterate over retrieved users and add them to userList
 			}
 			
 			ps.close();

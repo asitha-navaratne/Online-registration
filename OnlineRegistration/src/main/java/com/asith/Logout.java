@@ -15,7 +15,7 @@ public class Logout extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		session.removeAttribute("user");							/// Remove User object set as session attribute during login
-		session.invalidate();										/// Invalidates current session and removes any objects that were bound to the session
+		session.invalidate();									/// Invalidates current session and removes any objects that were bound to the session
 		response.sendRedirect("login.jsp");
 	}
 }
